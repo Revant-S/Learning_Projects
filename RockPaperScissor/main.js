@@ -37,10 +37,26 @@ function Result(playerSelection,computerChoice) {
         }
     }
 }
-const playerSelection  = prompt("Enter Your Choice");
-const computer = computerChoice();
-console.log("User Chose : " + playerSelection)
-console.log("Computer Chose : "+ computer)
-const WinnerObject = Result(playerSelection,computer)
-console.log("Winner : "+WinnerObject.Winner + " and Loser : "+ WinnerObject.Loser);
-console.log(Result(playerSelection,computer));
+function playGame() {
+    let UserScore = 0;
+    let Computer = 0;
+    for (let index = 0; index < 5; index++) {
+    
+        const playerSelection  = prompt("Enter Your Choice");
+        const computer = computerChoice();
+    
+        const WinnerObject = Result(playerSelection,computer)
+        if(WinnerObject.Winner == "User"){
+            UserScore++;
+        }else if(WinnerObject.Winner == "Computer"){
+            Computer++;
+        }
+    }
+    return (UserScore>Computer) ? "User" : "Computer";
+
+}
+
+const UltimateResukt = playGame();
+
+console.log("The Winner of the game is : " + UltimateResukt)
+
